@@ -1,0 +1,620 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAERIL - Professional Swimmer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        }
+                    },
+                    animation: {
+                        'wave-slow': 'wave 8s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        wave: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .water-gradient {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0c4a6e 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-ocean-500 selection:text-white">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card transition-all duration-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-ocean-600 text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-ocean-500/30">
+                        H
+                    </div>
+                    <span class="font-bold text-xl tracking-wider text-ocean-950">HAERIL</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-semibold text-slate-600 hover:text-ocean-600 transition-colors">Tentang Saya</a>
+                    <a href="#trophies" class="text-sm font-semibold text-slate-600 hover:text-ocean-600 transition-colors">Prestasi & Trofi</a>
+                    <a href="#skills" class="text-sm font-semibold text-slate-600 hover:text-ocean-600 transition-colors">Gaya Renang</a>
+                    <a href="#gallery" class="text-sm font-semibold text-slate-600 hover:text-ocean-600 transition-colors">Galeri</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-ocean-600 text-white font-medium text-sm hover:bg-ocean-700 transition-all shadow-md shadow-ocean-600/20 hover:shadow-lg">Hubungi Saya</a>
+                </div>
+
+                <button class="md:hidden text-slate-700 hover:text-ocean-600 focus:outline-none" id="mobile-menu-btn">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white/95 border-b border-slate-100 px-4 pt-2 pb-6 space-y-3" id="mobile-menu">
+            <a href="#about" class="block py-2 text-slate-600 font-medium hover:text-ocean-600">Tentang Saya</a>
+            <a href="#trophies" class="block py-2 text-slate-600 font-medium hover:text-ocean-600">Prestasi & Trofi</a>
+            <a href="#skills" class="block py-2 text-slate-600 font-medium hover:text-ocean-600">Gaya Renang</a>
+            <a href="#gallery" class="block py-2 text-slate-600 font-medium hover:text-ocean-600">Galeri</a>
+            <a href="#contact" class="block py-2 text-ocean-600 font-semibold">Hubungi Saya</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden water-gradient text-white">
+        <!-- Background Decorative Water Effect -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-ocean-100 text-sm font-medium">
+                        <i class="fa-solid fa-water text-ocean-400"></i> Atlet & Swimmer Passionate
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+                        Halo, Saya <span class="text-cyan-300 underline decoration-cyan-400/50">HAERIL</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-200 max-w-2xl font-light leading-relaxed">
+                        Perenang yang berdedikasi tinggi dengan passion mendalam di air. Mengubah setiap kebiasaan berenang menjadi pencapaian dan trofi kebanggaan.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#trophies" class="px-8 py-4 rounded-full bg-cyan-400 text-ocean-950 font-bold hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-400/30 transform hover:-translate-y-0.5">
+                            Lihat Trofi Saya <i class="fa-solid fa-trophy ml-2"></i>
+                        </a>
+                        <a href="#about" class="px-8 py-4 rounded-full bg-white/10 border border-white/30 text-white font-semibold hover:bg-white/20 backdrop-blur-md transition-all">
+                            Cerita Saya
+                        </a>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-3xl font-extrabold text-cyan-300">12+</div>
+                            <div class="text-xs text-slate-300 uppercase tracking-wider mt-1">Trofi & Medali</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-extrabold text-cyan-300">5+</div>
+                            <div class="text-xs text-slate-300 uppercase tracking-wider mt-1">Tahun Pengalaman</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-extrabold text-cyan-300">100%</div>
+                            <div class="text-xs text-slate-300 uppercase tracking-wider mt-1">Dedikasi Air</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+                        <!-- Animated Outer Rings -->
+                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-cyan-300/40 animate-spin" style="animation-duration: 25s;"></div>
+                        <div class="absolute -inset-4 rounded-full border border-cyan-400/20"></div>
+                        
+                        <!-- Main Swimmer Profile Card/Image -->
+                        <div class="w-full h-full rounded-full overflow-hidden border-4 border-white/30 shadow-2xl relative group">
+                            <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&q=80&w=800" 
+                                 alt="HAERIL Swimming" 
+                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x600/0284c7/ffffff?text=HAERIL+Swimmer'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-ocean-950/80 via-transparent to-transparent opacity-60"></div>
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-2 -right-2 bg-white text-slate-800 p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-float border border-slate-100">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 font-medium">Status Saat Ini</div>
+                                <div class="text-sm font-bold text-slate-800">Perenang Aktif</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-ocean-600 font-bold text-sm tracking-wider uppercase bg-ocean-50 px-4 py-1.5 rounded-full">Tentang HAERIL</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Kecintaan Pada Dunia Renang</h2>
+                <div class="w-20 h-1.5 bg-ocean-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-slate-600 leading-relaxed">
+                    <h3 class="text-2xl font-bold text-slate-800">
+                        "Air adalah tempat di mana saya menemukan kebebasan dan tantangan sejati."
+                    </h3>
+                    <p>
+                        Halo! Nama saya **HAERIL**. Bagi saya, berenang bukan sekadar olahraga atau hobi biasa, melainkan sebuah gaya hidup dan disiplin ilmu yang membentuk karakter saya. Sejak pertama kali masuk ke kolam renang, saya telah jatuh cinta dengan ketenangan dan dinamika bergerak di dalam air.
+                    </p>
+                    <p>
+                        Selama perjalanan ini, konsistensi dan latihan keras telah membuahkan hasil berupa beberapa **trofi dan medali kejuaraan**. Setiap detik di lintasan renang mengajari saya arti penting kerja keras, ketahanan, dan fokus.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="text-ocean-600 font-bold text-lg mb-1"><i class="fa-solid fa-stopwatch mr-2"></i>Kecepatan</div>
+                            <p class="text-sm text-slate-500">Berfokus pada efisiensi kayuhan dan waktu terbaik di setiap nomor.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="text-ocean-600 font-bold text-lg mb-1"><i class="fa-solid fa-heart-pulse mr-2"></i>Stamina</div>
+                            <p class="text-sm text-slate-500">Melatih ketahanan fisik dan mental untuk jarak pendek maupun menengah.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div class="rounded-2xl overflow-hidden shadow-md h-48 sm:h-64">
+                            <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&q=80&w=600" 
+                                 alt="Swimming Practice" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://placehold.co/400x500/0284c7/ffffff?text=Latihan+Renang'">
+                        </div>
+                        <div class="p-6 rounded-2xl bg-ocean-600 text-white shadow-lg">
+                            <i class="fa-solid fa-quote-left text-3xl text-cyan-300 opacity-80 mb-2"></i>
+                            <p class="text-sm font-medium italic">Tidak ada batas untuk apa yang bisa dicapai saat kamu menyatu dengan air.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="p-6 rounded-2xl bg-slate-900 text-white shadow-lg">
+                            <div class="text-3xl font-extrabold text-cyan-400">100%</div>
+                            <div class="text-xs text-slate-400 mt-1">Komitmen & Semangat</div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden shadow-md h-48 sm:h-64">
+                            <img src="https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?auto=format&fit=crop&q=80&w=600" 
+                                 alt="Pool Water" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://placehold.co/400x500/075985/ffffff?text=Kolam+Renang'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trophies" class="py-24 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-ocean-600 font-bold text-sm tracking-wider uppercase bg-ocean-100/60 px-4 py-1.5 rounded-full">Pencapaian Terbaik</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Koleksi Trofi & Kejuaraan</h2>
+                <p class="text-slate-600 mt-2">Bukti dedikasi, latihan konsisten, dan kerja keras di lintasan renang.</p>
+                <div class="w-20 h-1.5 bg-ocean-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center gap-3 mb-12 flex-wrap">
+                <button onclick="filterTrophies('all')" class="trophy-filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-ocean-600 text-white shadow-md transition-all">Semua</button>
+                <button onclick="filterTrophies('juara1')" class="trophy-filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 shadow-sm transition-all">Juara 1</button>
+                <button onclick="filterTrophies('regional')" class="trophy-filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 shadow-sm transition-all">Tingkat Regional</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="trophy-grid">
+                
+                <!-- Trophy Card 1 -->
+                <div class="trophy-card juara1 regional bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-500 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full">Juara 1 - Emas</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-3 group-hover:text-ocean-600 transition-colors">Kejuaraan Renang Antar Daerah</h3>
+                    <p class="text-slate-500 text-sm mt-2">Nomor Gaya Bebas 100m Putra. Meraih posisi pertama dengan catatan waktu terbaik personal.</p>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400 font-medium">
+                        <span><i class="fa-regular fa-calendar mr-1"></i> 2025</span>
+                        <span><i class="fa-solid fa-location-dot mr-1"></i> Kolam Renang Utama</span>
+                    </div>
+                </div>
+
+                <!-- Trophy Card 2 -->
+                <div class="trophy-card regional bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-16 h-16 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-600 uppercase tracking-wider bg-slate-100 px-3 py-1 rounded-full">Juara 2 - Perak</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-3 group-hover:text-ocean-600 transition-colors">Turnamen Renang Pelajar</h3>
+                    <p class="text-slate-500 text-sm mt-2">Nomor Gaya Dada 50m Putra. Kompetisi sengit antar atlet muda berbakat.</p>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400 font-medium">
+                        <span><i class="fa-regular fa-calendar mr-1"></i> 2024</span>
+                        <span><i class="fa-solid fa-location-dot mr-1"></i> Stadion Akuatik</span>
+                    </div>
+                </div>
+
+                <!-- Trophy Card 3 -->
+                <div class="trophy-card juara1 bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-500 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full">Juara 1 - Emas</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-3 group-hover:text-ocean-600 transition-colors">Sprint Swimming Competition</h3>
+                    <p class="text-slate-500 text-sm mt-2">Nomor Gaya Bebas 50m Sprint. Memecahkan rekor waktu tercepat dalam kualifikasi.</p>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400 font-medium">
+                        <span><i class="fa-regular fa-calendar mr-1"></i> 2024</span>
+                        <span><i class="fa-solid fa-location-dot mr-1"></i> Aquatic Club</span>
+                    </div>
+                </div>
+
+                <!-- Trophy Card 4 -->
+                <div class="trophy-card regional bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-700/10 text-amber-700 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-800 uppercase tracking-wider bg-amber-100/50 px-3 py-1 rounded-full">Juara 3 - Perunggu</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-3 group-hover:text-ocean-600 transition-colors">Kejuaraan Renang Estafet</h3>
+                    <p class="text-slate-500 text-sm mt-2">Nomor 4x50m Gaya Ganti Estafet Tim. Kerjasama tim luar biasa menuju podium.</p>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400 font-medium">
+                        <span><i class="fa-regular fa-calendar mr-1"></i> 2023</span>
+                        <span><i class="fa-solid fa-location-dot mr-1"></i> Gelanggang Olahraga</span>
+                    </div>
+                </div>
+
+                <!-- Trophy Card 5 -->
+                <div class="trophy-card juara1 bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-500 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full">Juara 1 - Emas</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-3 group-hover:text-ocean-600 transition-colors">Open Water Swim Challenge</h3>
+                    <p class="text-slate-500 text-sm mt-2">Kompetisi renang di perairan terbuka kategori ketahanan 1.5 KM.</p>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400 font-medium">
+                        <span><i class="fa-regular fa-calendar mr-1"></i> 2023</span>
+                        <span><i class="fa-solid fa-location-dot mr-1"></i> Pesisir Pantai</span>
+                    </div>
+                </div>
+
+                <!-- Trophy Card 6 -->
+                <div class="trophy-card regional bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-slate-100 group">
+                    <div class="w-16 h-16 rounded-2xl bg-ocean-100 text-ocean-600 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="text-xs font-bold text-ocean-600 uppercase tracking-wider bg-ocean-50 px-3 py-1 rounded-full">Penghargaan Khusus</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-3 group-hover:text-ocean-600 transition-colors">Perenang Terfavorit & Teknik Terbaik</h3>
+                    <p class="text-slate-500 text-sm mt-2">Apresiasi atas disiplin tinggi dan teknik gaya renang yang paling efisien.</p>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400 font-medium">
+                        <span><i class="fa-regular fa-calendar mr-1"></i> 2022</span>
+                        <span><i class="fa-solid fa-location-dot mr-1"></i> Swim Academy</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-ocean-600 font-bold text-sm tracking-wider uppercase bg-ocean-50 px-4 py-1.5 rounded-full">Keahlian Renang</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Gaya Renang Dikuasai</h2>
+                <p class="text-slate-600 mt-2">Penguasaan teknik dan spesialisasi HAERIL di kolam renang.</p>
+                <div class="w-20 h-1.5 bg-ocean-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-ocean-300 transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-ocean-600 text-white flex items-center justify-center text-xl mb-4 shadow-md shadow-ocean-600/20">
+                        <i class="fa-solid fa-person-swimming"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Gaya Bebas (Freestyle)</h3>
+                    <p class="text-slate-500 text-xs mt-2 mb-4">Gaya andalan utama dengan fokus pada hidrodinamika tubuh dan ritme pernapasan.</p>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5">
+                        <div class="bg-ocean-600 h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 mt-2 block text-right font-medium">95% Penguasaan</span>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-ocean-300 transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-600 text-white flex items-center justify-center text-xl mb-4 shadow-md shadow-cyan-600/20">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Gaya Dada (Breaststroke)</h3>
+                    <p class="text-slate-500 text-xs mt-2 mb-4">Teknik dorongan kaki yang kuat dan koordinasi dorongan tangan terukur.</p>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5">
+                        <div class="bg-cyan-600 h-2.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 mt-2 block text-right font-medium">90% Penguasaan</span>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-ocean-300 transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-sky-600 text-white flex items-center justify-center text-xl mb-4 shadow-md shadow-sky-600/20">
+                        <i class="fa-solid fa-[#]"></i>
+                        <i class="fa-solid fa-life-ring"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Gaya Punggung (Backstroke)</h3>
+                    <p class="text-slate-500 text-xs mt-2 mb-4">Kemampuan menjaga arah lintasan lurus dan keseimbangan tubuh terlentang.</p>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5">
+                        <div class="bg-sky-600 h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 mt-2 block text-right font-medium">85% Penguasaan</span>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-ocean-300 transition-all hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xl mb-4 shadow-md shadow-blue-600/20">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Gaya Kupu-kupu (Butterfly)</h3>
+                    <p class="text-slate-500 text-xs mt-2 mb-4">Kekuatan otot inti dan ketepatan waktu lumba-lumba (dolphin kick).</p>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5">
+                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 mt-2 block text-right font-medium">80% Penguasaan</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cyan-400 font-bold text-sm tracking-wider uppercase bg-white/10 px-4 py-1.5 rounded-full">Momen Terbaik</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4">Galeri Dokumentasi</h2>
+                <p class="text-slate-400 mt-2">Potret aksi saat berlatih dan bertanding di ajang kejuaraan.</p>
+                <div class="w-20 h-1.5 bg-cyan-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative rounded-2xl overflow-hidden h-72 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&q=80&w=800" 
+                         alt="Gallery 1" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x400/0369a1/ffffff?text=Perlombaan+Renang'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cyan-400">Kompetisi</span>
+                        <h4 class="text-lg font-bold text-white">Persiapan Sesaat Sebelum Start</h4>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden h-72 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&q=80&w=800" 
+                         alt="Gallery 2" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Aksi+Di+Air'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cyan-400">Teknik</span>
+                        <h4 class="text-lg font-bold text-white">Latihan Kecepatan Kayuhan</h4>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden h-72 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1560090995-01632a28895b?auto=format&fit=crop&q=80&w=800" 
+                         alt="Gallery 3" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         onerror="this.src='https://placehold.co/600x400/0c4a6e/ffffff?text=Penyerahan+Trofi'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-xs font-semibold text-cyan-400">Podium</span>
+                        <h4 class="text-lg font-bold text-white">Penerimaan Piala Kejuaraan</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-ocean-600 font-bold text-sm tracking-wider uppercase bg-ocean-50 px-4 py-1.5 rounded-full">Kontak</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Mari Terhubung Dengan HAERIL</h2>
+                    <p class="text-slate-600">Terbuka untuk kolaborasi, sesi latihan bersama, event kejuaraan, atau sekadar berbagi pengalaman seputar dunia renang.</p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="w-12 h-12 rounded-xl bg-ocean-100 text-ocean-600 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-medium">Email</div>
+                                <div class="font-bold text-slate-800">haeril.swimmer@example.com</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="w-12 h-12 rounded-xl bg-ocean-100 text-ocean-600 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-medium">Instagram</div>
+                                <div class="font-bold text-slate-800">@haeril_swim</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                            <div class="w-12 h-12 rounded-xl bg-ocean-100 text-ocean-600 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-medium">Lokasi</div>
+                                <div class="font-bold text-slate-800">Indonesia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-slate-50 p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Lengkap</label>
+                                <input type="text" required placeholder="Nama Anda" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
+                                <input type="email" required placeholder="email@domain.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 bg-white">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Subjek</label>
+                            <input type="text" required placeholder="Subjek pesan" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 bg-white">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Pesan</label>
+                            <textarea rows="4" required placeholder="Tuliskan pesan Anda di sini..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-ocean-500 bg-white"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-ocean-600 hover:bg-ocean-700 text-white font-bold transition-all shadow-lg shadow-ocean-600/30">
+                            Kirim Pesan <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+
+                    <!-- Alert Box Replacement -->
+                    <div id="formSuccessMessage" class="hidden mt-4 p-4 rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-200 text-sm font-semibold flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>
+                        Pesan Anda berhasil dikirim! HAERIL akan segera menghubungi Anda.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex items-center justify-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-ocean-600 text-white flex items-center justify-center font-bold text-lg">
+                    H
+                </div>
+                <span class="font-bold text-xl tracking-wider text-white">HAERIL</span>
+            </div>
+            <p class="text-sm max-w-md mx-auto text-slate-500">
+                Portofolio Renang Profesional & Koleksi Trofi Pencapaian.
+            </p>
+            <div class="text-xs text-slate-600 pt-6 border-t border-slate-900">
+                &copy; 2026 HAERIL. All rights reserved. Made with passion for swimming.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when link clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Trophy Filter Logic
+        function filterTrophies(category) {
+            const buttons = document.querySelectorAll('.trophy-filter-btn');
+            const cards = document.querySelectorAll('.trophy-card');
+
+            // Active button style update
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-ocean-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-600');
+            });
+
+            event.target.classList.remove('bg-white', 'text-slate-600');
+            event.target.classList.add('bg-ocean-600', 'text-white', 'shadow-md');
+
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else if (card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Handle Contact Form Submit without alert()
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const successMsg = document.getElementById('formSuccessMessage');
+            const form = document.getElementById('contactForm');
+            
+            successMsg.classList.remove('hidden');
+            form.reset();
+
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
+```
